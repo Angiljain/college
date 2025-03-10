@@ -6,28 +6,120 @@
     <title>College Attendance System</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+            color: #333;
         }
+
+        header {
+            background-color: #3b5998;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-family: 'Verdana', sans-serif;
+        }
+
+        section {
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            font-size: 1.8em;
+            color: #3b5998;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+            color: #444;
+        }
+
+        select, input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1em;
+            background-color: #f9f9f9;
+            box-sizing: border-box;
+        }
+
+        select:focus, input[type="text"]:focus {
+            border-color: #3b5998;
+            outline: none;
+            background-color: #fff;
+        }
+
+        button {
+            background-color: #3b5998;
+            color: white;
+            padding: 12px 20px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2d4373;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
         }
+
         th, td {
-            padding: 10px;
+            padding: 12px;
             text-align: left;
             border: 1px solid #ddd;
+            font-size: 1.1em;
         }
+
         th {
-            background-color: #f2f2f2;
+            background-color: #3b5998;
+            color: white;
         }
-        .form-container {
-            margin-bottom: 20px;
+
+        td {
+            background-color: #f9f9f9;
         }
-        label {
-            font-weight: bold;
+
+        tbody tr:nth-child(even) td {
+            background-color: #f1f1f1;
         }
+
+        .footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 1em;
+            background-color: #3b5998;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
     </style>
 </head>
 <body>
@@ -42,13 +134,13 @@
             <select id="studentName" name="studentName" required>
                 <!-- Student names will be populated dynamically here -->
             </select>
-            <br><br>
+
             <label for="attendanceStatus">Attendance Status:</label>
             <select id="attendanceStatus" name="attendanceStatus" required>
                 <option value="Present">Present</option>
                 <option value="Absent">Absent</option>
             </select>
-            <br><br>
+
             <button type="submit">Mark Attendance</button>
         </form>
     </section>
@@ -67,6 +159,10 @@
             </tbody>
         </table>
     </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 College Attendance System</p>
+    </footer>
 
     <script>
         // Predefined student dataset
