@@ -39,7 +39,9 @@
         <h2>Mark Attendance</h2>
         <form id="attendanceForm">
             <label for="studentName">Student Name:</label>
-            <input type="text" id="studentName" name="studentName" required>
+            <select id="studentName" name="studentName" required>
+                <!-- Student names will be populated dynamically here -->
+            </select>
             <br><br>
             <label for="attendanceStatus">Attendance Status:</label>
             <select id="attendanceStatus" name="attendanceStatus" required>
@@ -67,6 +69,24 @@
     </section>
 
     <script>
+        // Predefined student dataset
+        const students = [
+            { id: 1, name: 'Alice Johnson' },
+            { id: 2, name: 'Bob Smith' },
+            { id: 3, name: 'Charlie Brown' },
+            { id: 4, name: 'David White' },
+            { id: 5, name: 'Eve Davis' }
+        ];
+
+        // Populate the student names into the dropdown
+        const studentSelect = document.getElementById('studentName');
+        students.forEach(student => {
+            const option = document.createElement('option');
+            option.value = student.name;
+            option.textContent = student.name;
+            studentSelect.appendChild(option);
+        });
+
         // Handle form submission
         document.getElementById("attendanceForm").addEventListener("submit", function(event) {
             event.preventDefault(); // Prevent the form from refreshing the page
