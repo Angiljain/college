@@ -158,6 +158,9 @@
                 <!-- Attendance records will be displayed here -->
             </tbody>
         </table>
+
+        <!-- Button to download the attendance report -->
+        <button id="downloadReportBtn" onclick="downloadAttendanceReport()">Download Attendance Report</button>
     </section>
 
     <footer class="footer">
@@ -173,6 +176,9 @@
             { id: 4, name: 'David White' },
             { id: 5, name: 'Eve Davis' }
         ];
+
+        // Store attendance records
+        let attendanceRecords = [];
 
         // Populate the student names into the dropdown
         const studentSelect = document.getElementById('studentName');
@@ -191,6 +197,9 @@
             var studentName = document.getElementById("studentName").value;
             var attendanceStatus = document.getElementById("attendanceStatus").value;
 
+            // Add the attendance record to the array
+            attendanceRecords.push({ studentName, attendanceStatus });
+
             // Create a new row in the attendance table
             var table = document.getElementById("attendanceTable").getElementsByTagName('tbody')[0];
             var newRow = table.insertRow();
@@ -206,6 +215,23 @@
             // Clear the form inputs
             document.getElementById("attendanceForm").reset();
         });
+
+        // Download Attendance Report as CSV
+        function downloadAttendanceReport() {
+            let csvContent = "Student Name,Attendance Status\n";
+
+            // Loop through the attendance records to create CSV rows
+            attendanceRecords.forEach(record => {
+                csvContent += `${record.studentName},${record.attendanceStatus}\n`;
+            });
+
+            // Create a link to download the CSV
+            const encodedUri = encodeURI("data:text/csv;charset=utf-8," + csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "attendance_report.csv");
+            link.click();
+        }
     </script>
 </body>
 </html>
